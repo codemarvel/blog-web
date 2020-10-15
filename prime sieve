@@ -1,0 +1,30 @@
+
+import math
+def sieve(n):
+    li=[1]*(n+1)
+    p=2
+    while(p*p<=n):
+        if li[p]:
+            for i in range(p*p,n+1,p):
+                li[i]=0
+        p=p+1
+    return li
+def checkprime(n):
+    if (n==1 or n&1==0):
+        return  0
+    elif n==2:
+        return 1
+    else:
+        for i in range(3,math.ceil(math.sqrt(n))+1,2):
+            if n%i==0:
+                return 0
+        return 1
+lst=sieve(101)
+for i in range(2,101):
+    if lst[i]:
+        print(i, end=" ")
+print("")
+
+for j in range(101):
+    if checkprime(j):
+        print(j,end=" ")
